@@ -65,6 +65,10 @@ class LinkedList {
     }
 
     clear() {
+        this._tail.data = null;
+        this._head.data = null;
+        this.length = 0;
+        return this;
 
     }
 
@@ -83,6 +87,17 @@ class LinkedList {
     };
 
     reverse() {
+        var current = this._head;
+        var temp = null;
+        while (current !== null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+        temp = this._head;
+        this._head = this._tail;
+        this._tail = temp;
 
     }
 
